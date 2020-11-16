@@ -8,6 +8,9 @@
 	<title>L'e-brairie : Votre bibliothèque en ligne</title>
 
 	<link rel="stylesheet" href="./css/style.css">
+
+	<!-- Font Awesome icons -->
+	<script src="https://kit.fontawesome.com/a64b3ad516.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -15,11 +18,11 @@
 	<!-- Header of homepage. Contains logo, company name and horizontal menu -->
 	<header class="clearfix">
 		<div class="website_head">
-			<a href="./index.html">
-				<img src="./img/icon.png" alt="logo_e-brairie" height="64" style="margin: 0 10px;" />
-				<h1 class="title middle">L'e-brairie</h1>
+			<a href="./index.html" style="display: flex; align-items: center">
+				<img src="./img/icon.png" alt="logo_e-brairie" height="64" style="margin: 0 10px" />
+				<h1 class="title">L'e-brairie</h1>
+				<span style="margin: 8px 0 0 1em">Votre bibliothèque en ligne</span>
 			</a>
-			<span class="middle">Votre bibliothèque en ligne</span>
 		</div>
 
 		<nav class="menu head">
@@ -31,16 +34,16 @@
 				<li><a class="nav-link middle" href="./contact.html">Contact</a></li>
 
 				<li>
-					<a class="middle icon-btn login-btn" href="#" style="margin: 0 5px;">
-						Compte
-						<!-- Remplacer plus tard avec une icône fa -->
+					<a class="icon-btn login-btn" href="#" style="margin: 0 5px">
+						<i class="fas fa-user"></i>
+						<span class="icon-label">Votre compte</span>
 					</a>
 				</li>
 
 				<li>
-					<a class="middle icon-btn cart-btn" href="#" style="margin: 0 5px;">
-						<!-- Panier -->
-						<!-- Remplacer plus tard avec une icône fa -->
+					<a class="icon-btn cart-btn" href="#" style="margin: 0 5px">
+						<i class="fas fa-shopping-basket"></i>
+						<span class="icon-label">Votre panier</span>
 					</a>
 				</li>
 			</ul>
@@ -75,6 +78,8 @@
 							<th>Auteur</th>
 							<th>&Eacute;diteur</th>
 							<th>Prix</th>
+							<th>Panier</th>
+							<th class="stock">Stock</th>
 						</tr>
 					</thead>
 
@@ -84,7 +89,13 @@
 						<td><a href="#">La planète des singes</a></td> <!-- Link to book page -->
 						<td><a href="#">Pierre Boulle</a></td> <!-- Link to catalog filtered on this author -->
 						<td><a href="#">Pocket</a></td> <!-- Link to catalog filtered on this editor -->
-						<td>5,99&euro; <a href="#">Ajouter au panier</a></td>
+						<td>5,99&euro;</td>
+						<td>
+							<i class="fas fa-plus cart-plus"></i>
+							<span class="cart-quantity">0</span>
+							<i class="fas fa-minus cart-minus"></i>
+						</td>
+						<td class="stock-quantity">5</td>
 					</tr>
 
 					<tr class="product">
@@ -93,7 +104,13 @@
 						<td><a href="#">Léviatemps</a></td> <!-- Link to book page -->
 						<td><a href="#">Maxime Chattam</a></td> <!-- Link to catalog filtered on this author -->
 						<td><a href="#">Pocket</a></td> <!-- Link to catalog filtered on this editor -->
-						<td>8,70&euro; <a href="#">Ajouter au panier</a></td>
+						<td>8,70&euro;</td>
+						<td>
+							<i class="fas fa-plus cart-plus"></i>
+							<span class="cart-quantity">0</span>
+							<i class="fas fa-minus cart-minus"></i>
+						</td>
+						<td class="stock-quantity">5</td>
 					</tr>
 
 					<tr class="product">
@@ -102,7 +119,13 @@
 						<td><a href="#">Que ta volonté soit faite</a></td> <!-- Link to book page -->
 						<td><a href="#">Maxime Chattam</a></td> <!-- Link to catalog filtered on this author -->
 						<td><a href="#">Pocket</a></td> <!-- Link to catalog filtered on this editor -->
-						<td>7,60&euro; <a href="#">Ajouter au panier</a></td>
+						<td>7,60&euro;</td>
+						<td>
+							<i class="fas fa-plus cart-plus"></i>
+							<span class="cart-quantity">0</span>
+							<i class="fas fa-minus cart-minus"></i>
+						</td>
+						<td class="stock-quantity">5</td>
 					</tr>
 
 					<tr class="product">
@@ -111,7 +134,13 @@
 						<td><a href="#">Crime et Châtiment</a></td> <!-- Link to book page -->
 						<td><a href="#">Fiodor Dostoïevski</a></td> <!-- Link to catalog filtered on this author -->
 						<td><a href="#">Le Livre de Poche</a></td> <!-- Link to catalog filtered on this editor -->
-						<td>8,60&euro; <a href="#">Ajouter au panier</a></td>
+						<td>8,60&euro;</td>
+						<td>
+							<i class="fas fa-plus cart-plus"></i>
+							<span class="cart-quantity">0</span>
+							<i class="fas fa-minus cart-minus"></i>
+						</td>
+						<td class="stock-quantity">5</td>
 					</tr>
 
 					<tr class="product">
@@ -120,7 +149,13 @@
 						<td><a href="#">Trois</a></td> <!-- Link to book page -->
 						<td><a href="#">Sarah Lotz</a></td> <!-- Link to catalog filtered on this author -->
 						<td><a href="#">Pocket</a></td> <!-- Link to catalog filtered on this editor -->
-						<td>8,20&euro; <a href="#">Ajouter au panier</a></td>
+						<td>8,20&euro;</td>
+						<td>
+							<i class="fas fa-plus cart-plus"></i>
+							<span class="cart-quantity">0</span>
+							<i class="fas fa-minus cart-minus"></i>
+						</td>
+						<td class="stock-quantity">5</td>
 					</tr>
 				</table>
 			</div>
