@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="./img/favicon.png">
+	<title>L'e-brairie : Votre bibliothèque en ligne</title>
+
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+	<!-- Header of homepage. Contains logo, company name and horizontal menu -->
+	<header class="clearfix">
+		<div class="website_head">
+			<a href="./index.html">
+				<img src="./img/icon.png" alt="logo_e-brairie" height="64" style="margin: 0 10px;" />
+				<h1 class="title middle">L'e-brairie</h1>
+			</a>
+			<span class="middle">Votre bibliothèque en ligne</span>
+		</div>
+
+		<nav class="menu head">
+			<ul class="flex horizontal">
+				<li><a class="nav-link middle" href="./roman.html">Roman</a></li>
+				<li><a class="nav-link middle" href="./poesie.html">Poésie</a></li>
+				<li><a class="nav-link middle" href="./theatre.html">Théâtre</a></li>
+				<li><a class="nav-link middle" href="./manga.html">Manga</a></li>
+				<li><a class="nav-link middle" href="./contact.html">Contact</a></li>
+
+				<li>
+					<a class="middle icon-btn login-btn" href="#" style="margin: 0 5px;">
+						Compte
+						<!-- Remplacer plus tard avec une icône fa -->
+					</a>
+				</li>
+
+				<li>
+					<a class="middle icon-btn cart-btn" href="#" style="margin: 0 5px;">
+						Panier
+						<!-- Remplacer plus tard avec une icône fa -->
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Main body of the homepage -->
+
+	<div class="main-body clearfix">
+
+		<!-- Side vertical menu -->
+		<nav class="menu side">
+			<ul class="flex vertical">
+				<li><a class="nav-link center middle" href="./roman.html">Roman</a></li>
+				<li><a class="nav-link center middle" href="./poesie.html">Poésie</a></li>
+				<li><a class="nav-link center middle" href="./theatre.html">Théâtre</a></li>
+				<li><a class="nav-link center middle" href="./manga.html">Manga</a></li>
+				<li><a class="nav-link center middle" href="./contact.html">Contact</a></li>
+			</ul>
+		</nav>
+
+		<section class="content-container">
+			<div id="content">
+				<h2 class="center">Notre sélection de recueils de poésie</h2>
+
+				<table id="catalog">
+					<thead>
+						<tr>
+							<th>Ref</th>
+							<th>Couverture</th>
+							<th>Titre</th>
+							<th>Auteur</th>
+							<th>&Eacute;diteur</th>
+							<th>Prix</th>
+						</tr>
+					</thead>
+
+					<tr class="product">
+						<td class="prod-ref">P01</td>
+						<td><img class="cover" src="./img/les-fleurs-du-mal.jpg" alt="title_cover"></td>
+						<td><a href="#">Les Fleurs du Mal</a></td> <!-- Link to book page -->
+						<td><a href="#">Charles Baudelaire</a></td> <!-- Link to catalog filtered on this author -->
+						<td><a href="#">Larousse</a></td> <!-- Link to catalog filtered on this editor -->
+						<td>3,50&euro; <a href="#">Ajouter au panier</a></td>
+					</tr>
+
+					<tr class="product">
+						<td class="prod-ref">P02</td>
+						<td><img class="cover" src="./img/elsa.jpg" alt="title_cover"></td>
+						<td><a href="#">Elsa</a></td> <!-- Link to book page -->
+						<td><a href="#">Louis Aragon</a></td> <!-- Link to catalog filtered on this author -->
+						<td><a href="#">Gallimard</a></td> <!-- Link to catalog filtered on this editor -->
+						<td>6,50euro; <a href="#">Ajouter au panier</a></td>
+					</tr>
+
+					<tr class="product">
+						<td class="prod-ref">P03</td>
+						<td><img class="cover" src="./img/les-contemplations.jpg" alt="title_cover"></td>
+						<td><a href="#">Les Contemplations</a></td> <!-- Link to book page -->
+						<td><a href="#">Victor Hugo</a></td> <!-- Link to catalog filtered on this author -->
+						<td><a href="#">Gallimard</a></td> <!-- Link to catalog filtered on this editor -->
+						<td>11,30&euro; <a href="#">Ajouter au panier</a></td>
+					</tr>
+				</table>
+			</div>
+		</section>
+	</div>
+
+	<!-- Footer of website. Contains copyrights (and eventually more) -->
+	<footer>
+		<span class="center middle">&copy;Pinard Lucas - CY Tech</span>
+	</footer>
+</body>
+
+</html>

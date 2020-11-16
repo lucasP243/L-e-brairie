@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="./img/favicon.png">
+	<title>L'e-brairie : Votre bibliothèque en ligne</title>
+
+	<link rel="stylesheet" href="./css/style.css">
+	
+    <!-- Font Awesome icons -->
+    <script src="https://kit.fontawesome.com/a64b3ad516.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+	<!-- Header of homepage. Contains logo, company name and horizontal menu -->
+	<header class="clearfix">
+		<div class="website_head">
+		  <a href="./index.html" style="display: flex; align-items: center">
+			<img
+			  src="./img/icon.png"
+			  alt="logo_e-brairie"
+			  height="64"
+			  style="margin: 0 10px"
+			/>
+			<h1 class="title">L'e-brairie</h1>
+			<span style="margin: 8px 0 0 1em">Votre bibliothèque en ligne</span>
+		  </a>
+		</div>
+  
+		<nav class="menu head">
+		  <ul class="flex horizontal">
+			<li><a class="nav-link middle" href="./roman.html">Roman</a></li>
+			<li><a class="nav-link middle" href="./poesie.html">Poésie</a></li>
+			<li><a class="nav-link middle" href="./theatre.html">Théâtre</a></li>
+			<li><a class="nav-link middle" href="./manga.html">Manga</a></li>
+			<li><a class="nav-link middle" href="./contact.html">Contact</a></li>
+  
+			<li>
+			  <a class="icon-btn login-btn" href="#" style="margin: 0 5px">
+				<i class="fas fa-user"></i>
+				<span class="icon-label">Votre compte</span>
+			  </a>
+			</li>
+  
+			<li>
+			  <a class="icon-btn cart-btn" href="#" style="margin: 0 5px">
+				<i class="fas fa-shopping-basket"></i>
+				<span class="icon-label">Votre panier</span>
+			  </a>
+			</li>
+		  </ul>
+		</nav>
+	</header>
+
+	<!-- Main body of the homepage -->
+
+	<div class="main-body clearfix">
+
+		<!-- Side vertical menu -->
+		<nav class="menu side">
+			<ul class="flex vertical">
+				<li><a class="nav-link center middle" href="./roman.html">Roman</a></li>
+				<li><a class="nav-link center middle" href="./poesie.html">Poésie</a></li>
+				<li><a class="nav-link center middle" href="./theatre.html">Théâtre</a></li>
+				<li><a class="nav-link center middle" href="./manga.html">Manga</a></li>
+				<li><a class="nav-link center middle" href="./contact.html">Contact</a></li>
+			</ul>
+		</nav>
+
+		<section class="content-container">
+			<div id="content">
+				<h2>Nous contacter</h2>
+				<form id="form_contact" action="mailto:pinardluca@eisti.eu" method="post" enctype="text/plain">
+					<div id="contact_identity">
+						<span>Identité :</span>
+						<select class="form-input" name="gender" required>
+							<option value="m">Mr.</option>
+							<option value="f">Mme.</option>
+							<option value="o">Autre</option>
+						</select>
+						<input class="form-input" type="text" name="lastname" placeholder="Nom" required style="text-transform: uppercase;">
+						<input class="form-input" type="text" name="firstname" placeholder="Prénom" required>
+					</div>
+					<div id="contact_mail">
+						<label for="mail">E-mail :</label>
+						<input class="form-input" type="text" name="mail" placeholder="xyz@example.com" required>
+					</div>
+					<div id="contact_job">
+						<label for="job">Vous êtes :</label>
+						<p><input type="radio" name="job" value="libraire" required>&nbsp;Libraire</p>
+						<p><input type="radio" name="job" value="fournisseur">&nbsp;Fournisseur</p>
+						<p><input type="radio" name="job" value="clientpro">&nbsp;Client professionnel</p>
+						<p><input type="radio" name="job" value="clientpart">&nbsp;Client particulier</p>
+					</div>
+					<div id="contact_message">
+						<div>
+							<label for="subject">Sujet :</label>
+							<input class="form-input" style="display: inline;" type="text" name="subject" placeholder="Sujet" required>
+						</div>
+						<textarea name="body" placeholder="Votre message ici..." rows="10" maxlength="2000" required style="padding: 2px;"></textarea>
+					</div>
+					<div>
+						<input type="submit" value="Envoyer">
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+
+	<!-- Footer of website. Contains copyrights (and eventually more) -->
+	<footer>
+		<span class="center middle">&copy;Pinard Lucas - CY Tech</span>
+	</footer>
+</body>
+
+</html>
