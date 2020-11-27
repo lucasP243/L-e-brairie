@@ -47,6 +47,10 @@ a {
     text-align: center;
 }
 
+.right {
+    text-align: right;
+}
+
 body {
     min-height: 100vh;
     max-width: 100vw;
@@ -180,11 +184,21 @@ section.content {
     padding: 70px 40px;
 }
 
-#catalog {
+.catalog-container {
+    width: fit-content;
     margin: 50px auto;
+}
+
+#catalog {
+    margin-bottom: .2em;
     background-color: white;
     border: 2px solid black;
     border-collapse: collapse;
+    
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
 }
 
 #catalog th {
@@ -213,6 +227,11 @@ section.content {
     color: #276e18;
 }
 
+.stock-btn {
+    color: #276e18;
+    text-decoration: underline;
+}
+
 #form_contact {
     width: 80%;
     margin: 2em auto;
@@ -233,8 +252,9 @@ section.content {
     margin-right: 10px;
 }
 
-#contact_job p{
-	margin: 2px 0 0 50px;
+#contact_job p {
+    margin: 2px 0 0 50px;
+    cursor: pointer;
 }
 
 #contact_message {
@@ -245,6 +265,10 @@ section.content {
     display: block;
     width: 90%;
     margin: 8px 0;
+}
+
+#contact_message textarea {
+    padding: 2px;
 }
 
 .form-input {
@@ -274,9 +298,4 @@ footer {
     bottom: 0;
     color: white;
     width: 100%;
-}
-
-@media (max-width: 992px) {
-	.menu.side { display: none }
-	.content-container { width: 100% }
 }

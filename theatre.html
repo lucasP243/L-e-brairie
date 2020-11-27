@@ -2,171 +2,180 @@
 <html lang="fr">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="./img/favicon.png">
-	<title>L'e-brairie : Votre bibliothèque en ligne</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./img/favicon.png">
+  <title>L'e-brairie : Votre bibliothèque en ligne</title>
 
-	<link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script type="text/javascript" src="./js/script.js"></script>
 
-	<!-- Font Awesome icons -->
-	<script src="https://kit.fontawesome.com/a64b3ad516.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome icons -->
+  <script src="https://kit.fontawesome.com/a64b3ad516.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-	<!-- Header of homepage. Contains logo, company name and horizontal menu -->
-	<header class="clearfix">
-		<div class="website_head">
-			<a href="./index.html" style="display: flex; align-items: center">
-				<img src="./img/icon.png" alt="logo_e-brairie" height="64" style="margin: 0 10px" />
-				<h1 class="title">L'e-brairie</h1>
-				<span style="margin: 8px 0 0 1em">Votre bibliothèque en ligne</span>
-			</a>
-		</div>
+  <!-- Header of homepage. Contains logo, company name and horizontal menu -->
+  <header class="clearfix">
+    <div class="website_head">
+      <a href="./index.html" style="display: flex; align-items: center">
+        <img src="./img/icon.png" alt="logo_e-brairie" height="64" style="margin: 0 10px" />
+        <h1 class="title">L'e-brairie</h1>
+        <span style="margin: 8px 0 0 1em">Votre bibliothèque en ligne</span>
+      </a>
+    </div>
 
-		<nav class="menu head">
-			<ul class="flex horizontal">
-				<li><a class="nav-link middle" href="./roman.html">Roman</a></li>
-				<li><a class="nav-link middle" href="./poesie.html">Poésie</a></li>
-				<li><a class="nav-link middle" href="./theatre.html">Théâtre</a></li>
-				<li><a class="nav-link middle" href="./manga.html">Manga</a></li>
-				<li><a class="nav-link middle" href="./contact.html">Contact</a></li>
+    <nav class="menu head">
+      <ul class="flex horizontal">
+        <li><a class="nav-link middle" href="./roman.html">Roman</a></li>
+        <li><a class="nav-link middle" href="./poesie.html">Poésie</a></li>
+        <li><a class="nav-link middle" href="./theatre.html">Théâtre</a></li>
+        <li><a class="nav-link middle" href="./manga.html">Manga</a></li>
+        <li><a class="nav-link middle" href="./contact.html">Contact</a></li>
 
-				<li>
-					<a class="icon-btn login-btn" href="#" style="margin: 0 5px">
-						<i class="fas fa-user"></i>
-						<span class="icon-label">Votre compte</span>
-					</a>
-				</li>
+        <li>
+          <a class="icon-btn login-btn" href="#" style="margin: 0 5px">
+            <i class="fas fa-user"></i>
+            <span class="icon-label">Votre compte</span>
+          </a>
+        </li>
 
-				<li>
-					<a class="icon-btn cart-btn" href="#" style="margin: 0 5px">
-						<i class="fas fa-shopping-basket"></i>
-						<span class="icon-label">Votre panier</span>
-					</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
+        <li>
+          <a class="icon-btn cart-btn" href="#" style="margin: 0 5px">
+            <i class="fas fa-shopping-basket"></i>
+            <span class="icon-label">Votre panier</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-	<!-- Main body of the homepage -->
+  <!-- Main body of the homepage -->
 
-	<div class="main-body clearfix">
+  <div class="main-body clearfix">
 
-		<!-- Side vertical menu -->
-		<nav class="menu side">
-			<ul class="flex vertical">
-				<li><a class="nav-link center middle" href="./roman.html">Roman</a></li>
-				<li><a class="nav-link center middle" href="./poesie.html">Poésie</a></li>
-				<li><a class="nav-link center middle" href="./theatre.html">Théâtre</a></li>
-				<li><a class="nav-link center middle" href="./manga.html">Manga</a></li>
-				<li><a class="nav-link center middle" href="./contact.html">Contact</a></li>
-			</ul>
-		</nav>
+    <!-- Side vertical menu -->
+    <nav class="menu side">
+      <ul class="flex vertical">
+        <li><a class="nav-link center middle" href="./roman.html">Roman</a></li>
+        <li><a class="nav-link center middle" href="./poesie.html">Poésie</a></li>
+        <li><a class="nav-link center middle" href="./theatre.html">Théâtre</a></li>
+        <li><a class="nav-link center middle" href="./manga.html">Manga</a></li>
+        <li><a class="nav-link center middle" href="./contact.html">Contact</a></li>
+      </ul>
+    </nav>
 
-		<section class="content-container">
-			<div id="content">
-				<h2 class="center">Notre sélection de pièces de théâtre</h2>
+    <section class="content-container">
+      <div id="content">
+        <h2 class="center">Notre sélection de pièces de théâtre</h2>
 
-				<table id="catalog">
-					<thead>
-						<tr>
-							<th>Ref</th>
-							<th>Couverture</th>
-							<th>Titre</th>
-							<th>Auteur</th>
-							<th>&Eacute;diteur</th>
-							<th>Prix</th>
-							<th>Panier</th>
-							<th class="stock">Stock</th>
-						</tr>
-					</thead>
+        <div class="catalog-container">
+          <table id="catalog">
+            <thead>
+              <tr>
+                <th>Ref</th>
+                <th>Couverture</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>&Eacute;diteur</th>
+                <th>Prix</th>
+                <th>Panier</th>
+                <th class="stock">Stock</th>
+              </tr>
+            </thead>
 
-					<tr class="product">
-						<td class="prod-ref">T01</td>
-						<td><img class="cover" src="./img/hamlet.jpg" alt="title_cover"></td>
-						<td><a href="#">Hamlet</a></td> <!-- Link to book page -->
-						<td><a href="#">William Shakespeare</a></td> <!-- Link to catalog filtered on this author -->
-						<td><a href="#">Librio</a></td> <!-- Link to catalog filtered on this editor -->
-						<td>2,00&euro;</td>
-						<td>
-							<i class="fas fa-plus cart-plus"></i>
-							<span class="cart-quantity">0</span>
-							<i class="fas fa-minus cart-minus"></i>
-						</td>
-						<td class="stock-quantity">5</td>
-					</tr>
+            <tbody>
+              <tr class="product">
+                <td class="prod-ref">T01</td>
+                <td><img class="cover" src="./img/hamlet.jpg" alt="title_cover"></td>
+                <td><a href="#">Hamlet</a></td> <!-- Link to book page -->
+                <td><a href="#">William Shakespeare</a></td> <!-- Link to catalog filtered on this author -->
+                <td><a href="#">Librio</a></td> <!-- Link to catalog filtered on this editor -->
+                <td>2,00&euro;</td>
+                <td>
+                  <i class="fas fa-plus cart-plus"></i>
+                  <span class="cart-quantity">0</span>
+                  <i class="fas fa-minus cart-minus"></i>
+                </td>
+                <td class="stock-quantity">5</td>
+              </tr>
 
-					<tr class="product">
-						<td class="prod-ref">T02</td>
-						<td><img class="cover" src="./img/les-fourberies-de-scapin.jpg" alt="title_cover"></td>
-						<td><a href="#">Les Fourberies de Scapin</a></td> <!-- Link to book page -->
-						<td><a href="#">Molière</a></td> <!-- Link to catalog filtered on this author -->
-						<td><a href="#">Larousse</a></td> <!-- Link to catalog filtered on this editor -->
-						<td>3,00&euro;</td>
-						<td>
-							<i class="fas fa-plus cart-plus"></i>
-							<span class="cart-quantity">0</span>
-							<i class="fas fa-minus cart-minus"></i>
-						</td>
-						<td class="stock-quantity">5</td>
-					</tr>
+              <tr class="product">
+                <td class="prod-ref">T02</td>
+                <td><img class="cover" src="./img/les-fourberies-de-scapin.jpg" alt="title_cover"></td>
+                <td><a href="#">Les Fourberies de Scapin</a></td> <!-- Link to book page -->
+                <td><a href="#">Molière</a></td> <!-- Link to catalog filtered on this author -->
+                <td><a href="#">Larousse</a></td> <!-- Link to catalog filtered on this editor -->
+                <td>3,00&euro;</td>
+                <td>
+                  <i class="fas fa-plus cart-plus"></i>
+                  <span class="cart-quantity">0</span>
+                  <i class="fas fa-minus cart-minus"></i>
+                </td>
+                <td class="stock-quantity">5</td>
+              </tr>
 
-					<tr class="product">
-						<td class="prod-ref">T03</td>
-						<td><img class="cover" src="./img/le-misanthrope.jpg" alt="title_cover"></td>
-						<td><a href="#">Le Misanthrope</a></td> <!-- Link to book page -->
-						<td><a href="#">Maxime Chattam</a></td> <!-- Link to catalog filtered on this author -->
-						<td><a href="#">&Eacute;tonnants Classiques</a></td>
-						<!-- Link to catalog filtered on this editor -->
-						<td>3,05&euro;</td>
-						<td>
-							<i class="fas fa-plus cart-plus"></i>
-							<span class="cart-quantity">0</span>
-							<i class="fas fa-minus cart-minus"></i>
-						</td>
-						<td class="stock-quantity">5</td>
-					</tr>
+              <tr class="product">
+                <td class="prod-ref">T03</td>
+                <td><img class="cover" src="./img/le-misanthrope.jpg" alt="title_cover"></td>
+                <td><a href="#">Le Misanthrope</a></td> <!-- Link to book page -->
+                <td><a href="#">Maxime Chattam</a></td> <!-- Link to catalog filtered on this author -->
+                <td><a href="#">&Eacute;tonnants Classiques</a></td>
+                <!-- Link to catalog filtered on this editor -->
+                <td>3,05&euro;</td>
+                <td>
+                  <i class="fas fa-plus cart-plus"></i>
+                  <span class="cart-quantity">0</span>
+                  <i class="fas fa-minus cart-minus"></i>
+                </td>
+                <td class="stock-quantity">5</td>
+              </tr>
 
-					<tr class="product">
-						<td class="prod-ref">T04</td>
-						<td><img class="cover" src="./img/on-ne-badine-pas-avec-l-amour.jpg" alt="title_cover"></td>
-						<td><a href="#">On ne badine pas avec l'amour !</a></td> <!-- Link to book page -->
-						<td><a href="#">Alfred de Musset</a></td> <!-- Link to catalog filtered on this author -->
-						<td><a href="#">Pocket</a></td> <!-- Link to catalog filtered on this editor -->
-						<td>1,55&euro;</td>
-						<td>
-							<i class="fas fa-plus cart-plus"></i>
-							<span class="cart-quantity">0</span>
-							<i class="fas fa-minus cart-minus"></i>
-						</td>
-						<td class="stock-quantity">5</td>
-					</tr>
+              <tr class="product">
+                <td class="prod-ref">T04</td>
+                <td><img class="cover" src="./img/on-ne-badine-pas-avec-l-amour.jpg" alt="title_cover"></td>
+                <td><a href="#">On ne badine pas avec l'amour !</a></td> <!-- Link to book page -->
+                <td><a href="#">Alfred de Musset</a></td> <!-- Link to catalog filtered on this author -->
+                <td><a href="#">Pocket</a></td> <!-- Link to catalog filtered on this editor -->
+                <td>1,55&euro;</td>
+                <td>
+                  <i class="fas fa-plus cart-plus"></i>
+                  <span class="cart-quantity">0</span>
+                  <i class="fas fa-minus cart-minus"></i>
+                </td>
+                <td class="stock-quantity">5</td>
+              </tr>
 
-					<tr class="product">
-						<td class="prod-ref">T05</td>
-						<td><img class="cover" src="./img/le-cid.jpeg" alt="title_cover"></td>
-						<td><a href="#">Le Cid</a></td> <!-- Link to book page -->
-						<td><a href="#">Pierre Corneille</a></td> <!-- Link to catalog filtered on this author -->
-						<td><a href="#">Pocket</a></td> <!-- Link to catalog filtered on this editor -->
-						<td>1,50&euro;</td>
-						<td>
-							<i class="fas fa-plus cart-plus"></i>
-							<span class="cart-quantity">0</span>
-							<i class="fas fa-minus cart-minus"></i>
-						</td>
-						<td class="stock-quantity">5</td>
-					</tr>
-				</table>
-			</div>
-		</section>
-	</div>
+              <tr class="product">
+                <td class="prod-ref">T05</td>
+                <td><img class="cover" src="./img/le-cid.jpeg" alt="title_cover"></td>
+                <td><a href="#">Le Cid</a></td> <!-- Link to book page -->
+                <td><a href="#">Pierre Corneille</a></td> <!-- Link to catalog filtered on this author -->
+                <td><a href="#">Pocket</a></td> <!-- Link to catalog filtered on this editor -->
+                <td>1,50&euro;</td>
+                <td>
+                  <i class="fas fa-plus cart-plus"></i>
+                  <span class="cart-quantity">0</span>
+                  <i class="fas fa-minus cart-minus"></i>
+                </td>
+                <td class="stock-quantity">5</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="right">
+            <a href="javascript:" class="stock-btn" id="show-stock">Afficher les stocks</a>
+            <a href="javascript:" class="stock-btn" id="hide-stock">Cacher les stocks</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
 
-	<!-- Footer of website. Contains copyrights (and eventually more) -->
-	<footer>
-		<span class="center middle">&copy;Pinard Lucas - CY Tech</span>
-	</footer>
+  <!-- Footer of website. Contains copyrights (and eventually more) -->
+  <footer>
+    <span class="center middle">&copy;Pinard Lucas - CY Tech</span>
+  </footer>
 </body>
 
 </html>
