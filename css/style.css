@@ -185,7 +185,7 @@ section.content {
 }
 
 .catalog-container {
-    width: fit-content;
+    display: table;
     margin: 50px auto;
 }
 
