@@ -79,6 +79,7 @@
             <input class="form-input" type="text" name="lastname" placeholder="Nom" pattern="[a-zA-Z '-]*" required
               style="text-transform: uppercase;">
             <input class="form-input" type="text" name="firstname" placeholder="Prénom" pattern="[a-zA-Z '-]*" required>
+            <label for="dob">Né le&nbsp;<input class="form-input" type="date" name="dob" required></label>
           </div>
           <div id="contact_mail">
             <label for="mail">E-mail :</label>
@@ -123,6 +124,13 @@
         (input) => {
           if (input.getAttribute('value') == '') {
             return event.preventDefault();
+          }
+        }
+      );
+      document.querySelectorAll('input[type="date"]').forEach(
+        (input) => {
+          if (Date.parse(input.value) === NaN) {
+            event.preventDefault();
           }
         }
       );
