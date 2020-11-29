@@ -16,6 +16,11 @@ a {
 	color: unset;
 }
 
+button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
 /*******************************/
 
 * {
@@ -209,6 +214,7 @@ section.content {
 #catalog td {
     padding: 8px 16px;
     border: 1px solid black;
+    max-width: 140px;
 }
 
 #catalog .cover {
@@ -230,6 +236,19 @@ section.content {
 .stock-btn {
     color: #276e18;
     text-decoration: underline;
+}
+
+.cart-ctrl {
+    text-align: center;
+}
+
+.add-cart {
+    color: white;
+    background-color: #276e18;
+    border: none;
+    padding: 3px;
+    margin-top: .2em;
+    border-radius: 3px;
 }
 
 #form_contact {
