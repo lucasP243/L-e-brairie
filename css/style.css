@@ -171,6 +171,10 @@ section.content {
     width: 100%;
 }
 
+.vertical .nav-link.active {
+    text-decoration: underline;
+}
+
 .vertical .nav-link:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
