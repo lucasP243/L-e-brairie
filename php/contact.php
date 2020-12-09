@@ -58,7 +58,7 @@ if (isset($_POST['submit']))
     <div id="content">
       <h2>Nous contacter</h2>
       <form id="form_contact" action="./?page=contact" method="post" enctype="application/x-www-form-urlencoded">
-        <div id="contact_identity">
+        <div class="form-section contact_identity">
           <span>Identité :</span>
           <select class="form-input" name="gender" required>
             <option value="m">Mr.</option>
@@ -69,18 +69,18 @@ if (isset($_POST['submit']))
           <input class="form-input" type="text" name="firstname" placeholder="Prénom" pattern="[a-zA-Z '-]+" required>
           <label for="dob">Né le&nbsp;<input class="form-input" type="date" name="dob" required></label>
         </div>
-        <div id="contact_mail">
+        <div class="form-section contact_creditentials">
           <label for="mail">E-mail :</label>
           <input class="form-input" type="email" name="mail" placeholder="xyz@example.com" required>
         </div>
-        <div id="contact_job">
+        <div class="form-section contact_job">
           <label for="job">Vous êtes :</label>
           <p class="radio"><input type="radio" name="job" value="libraire" required>&nbsp;Libraire</p>
           <p class="radio"><input type="radio" name="job" value="fournisseur">&nbsp;Fournisseur</p>
           <p class="radio"><input type="radio" name="job" value="clientpro">&nbsp;Client professionnel</p>
           <p class="radio"><input type="radio" name="job" value="clientpart">&nbsp;Client particulier</p>
         </div>
-        <div id="contact_message">
+        <div class="form-section contact_message">
           <div>
             <label for="subject">Sujet :</label>
             <input class="form-input" type="text" name="subject" placeholder="Sujet" required>

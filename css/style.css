@@ -255,6 +255,55 @@ section.content {
     border-radius: 3px;
 }
 
+.tab-group {
+    width: 30%;
+    min-width: 400px;
+    margin: 2em auto;
+    border: 1px solid grey;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.tab {
+    display: flex;
+    flex-direction: row;
+}
+
+.tab-link {
+    flex: 1 0 auto;
+    border: none;
+    border-right: 1px solid lightgray;
+    outline: none;
+    background-color: inherit;
+    cursor: pointer;
+    padding: 1em;
+}
+
+.tab-link:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.tab-link.active {
+    border-bottom: 3px solid #276e18;
+}
+
+.tab-content {
+    margin: 1em;
+    display: none;
+}
+
+#form_login .form-section, 
+#form_register .form-section {
+    display: flex;
+    flex-direction: column;
+}
+
+#form_login .form-section > *, 
+#form_register .form-section > *{
+    flex: 0 0 auto;
+    margin-top: 0.8em;
+}
+
 #form_contact {
     width: 80%;
     margin: 2em auto;
@@ -267,30 +316,30 @@ section.content {
     margin-top: 2em;
 }
 
-#contact_identity {
+.contact_identity {
     display: flex;
 }
 
-#contact_identity > * {
+.contact_identity > * {
     margin-right: 10px;
 }
 
-#contact_job p {
+.contact_job p {
     margin: 2px 0 0 50px;
     cursor: pointer;
 }
 
-#contact_message {
+.contact_message {
 	width: 100%;
 }
 
-#contact_message > * {
+.contact_message > * {
     display: block;
     width: 90%;
     margin: 8px 0;
 }
 
-#contact_message textarea {
+.contact_message textarea {
     padding: 2px;
 }
 
@@ -312,6 +361,10 @@ section.content {
 }
 
 input[type="submit"] {
+    color: white;
+    background-color: #276e18;
+    border-radius: 5px;
+    margin-top: 1em;
     padding: .2em 1em;
 }
 

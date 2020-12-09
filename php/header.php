@@ -29,19 +29,33 @@
         <li><a class="nav-link middle" href="./?category=manga">Manga</a></li>
         <li><a class="nav-link middle" href="./?page=contact">Contact</a></li>
 
-        <li>
-          <a class="icon-btn login-btn" href="./?page=account" style="margin: 0 5px">
-            <i class="fas fa-user"></i>
-            <span class="icon-label">Votre compte</span>
-          </a>
-        </li>
-
-        <li>
-          <a class="icon-btn cart-btn" href="./?page=cart" style="margin: 0 5px">
-            <i class="fas fa-shopping-basket"></i>
-            <span class="icon-label">Votre panier</span>
-          </a>
-        </li>
+        <?php if (isset($_SESSSION['user'])) { ?>
+          <li>
+            <a class="icon-btn account-btn" href="./?page=account" style="margin: 0 5px">
+              <i class="fas fa-user"></i>
+              <span class="icon-label">Votre compte</span>
+            </a>
+          </li>
+          <li>
+            <a class="icon-btn cart-btn" href="./?page=cart" style="margin: 0 5px">
+              <i class="fas fa-shopping-basket"></i>
+              <span class="icon-label">Votre panier</span>
+            </a>
+          </li>
+          <li>
+            <a class="icon-btn logout-btn" href="./?action=logout" style="margin: 0 5px">
+              <i class="fas fa-log-out-alt"></i>
+              <span class="icon-label">Se déconnecter</span>
+            </a>
+          </li>
+        <?php } else { ?>
+          <li>
+            <a class="icon-btn login-btn" href="./?page=login" style="margin: 0 5px">
+              <i class="fas fa-sign-in-alt"></i>
+              <span class="icon-label">Se connecter</span>
+            </a>
+          </li>
+        <?php } ?>
       </ul>
     </nav>
   </header>

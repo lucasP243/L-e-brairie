@@ -28,3 +28,16 @@ while($data = fgetcsv($file, 1000))
 
 
 $_SESSION['persistent'] = $persistent;
+
+
+// Define functions
+
+function verifyForm()
+{
+
+}
+
+function writeUser($user)
+{
+    
+}
