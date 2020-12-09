@@ -27,7 +27,7 @@ if (isset($_GET['category']))
           <a class="nav-link center middle <?php if ($category == "theatre") echo 'active'; ?>" href="./?category=theatre">Théâtre</a>
         </li>
         <li>
-          <a class="nav-link center middle <?php if ($category == "roman") echo 'active'; ?>" href="./?category=manga">Manga</a>
+          <a class="nav-link center middle <?php if ($category == "manga") echo 'active'; ?>" href="./?category=manga">Manga</a>
         </li>
       </ul>
     </nav>
