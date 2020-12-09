@@ -351,13 +351,32 @@ section.content {
     border-bottom: 3px solid #276e18;
 }
 
+.form-input_wrapper {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.form-input_wrapper::after {
+    position: absolute;
+    top: 120%;
+    left: 0;
+    font-size: 11px;
+    font-weight: bold;
+    color: #c00;
+    content: "";
+}
+
 .form-input:focus {
     background-color: transparent;
     border-bottom-color: #369821;
 }
 
-.form-input.error {
+.form-input_wrapper.invalid .form-input {
     border-bottom-color: #c00;
+}
+
+.form-input_wrapper.invalid::after {
+    content: attr(invalid-info);
 }
 
 input[type="submit"] {
@@ -366,6 +385,10 @@ input[type="submit"] {
     border-radius: 5px;
     margin-top: 1em;
     padding: .2em 1em;
+}
+
+input[type="submit"]:disabled {
+    opacity: 0.2;
 }
 
 footer {
