@@ -12,7 +12,7 @@
 
 <body>
   <!-- Header of homepage. Contains logo, company name and horizontal menu -->
-  <header class="clearfix">
+  <header class="flex horizontal clearfix">
     <div class="website_head">
       <a href="./" style="display: flex; align-items: center">
         <img src="./img/icon.png" alt="logo_e-brairie" height="64" style="margin: 0 10px" />
@@ -29,7 +29,7 @@
         <li><a class="nav-link middle" href="./?category=manga">Manga</a></li>
         <li><a class="nav-link middle" href="./?page=contact">Contact</a></li>
 
-        <?php if (isset($_SESSSION['user'])) { ?>
+        <?php if (isset($_SESSION['user'])) { ?>
           <li>
             <a class="icon-btn account-btn" href="./?page=account" style="margin: 0 5px">
               <i class="fas fa-user"></i>
@@ -40,12 +40,6 @@
             <a class="icon-btn cart-btn" href="./?page=cart" style="margin: 0 5px">
               <i class="fas fa-shopping-basket"></i>
               <span class="icon-label">Votre panier</span>
-            </a>
-          </li>
-          <li>
-            <a class="icon-btn logout-btn" href="./?action=logout" style="margin: 0 5px">
-              <i class="fas fa-log-out-alt"></i>
-              <span class="icon-label">Se déconnecter</span>
             </a>
           </li>
         <?php } else { ?>

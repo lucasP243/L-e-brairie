@@ -1,23 +1,53 @@
-<!-- TODO: add form verification both client-side & server-side -->
+<!-- TODO: add form sanitizing server-side -->
 <?php 
+  $user = null;
   if (isset($_POST['login']))
   {
     $mail = $_POST['mail'];
     $pwd = md5($_POST['pwd']);
 
-    $user = $_SESSION['persistent']['user'][$mail] ?? null;
+    if (isset($_SESSION['persistent']['user'][$mail]) && $_SESSION['persistent']['user'][$mail]['password'] == $pwd)
+    {
+      $user = $_SESSION['persistent']['user'][$mail];
+    }
+    else
+    {
+      $user = null;
+      $error = "Email ou mot de passe incorrect.";
+    }
   }
   if (isset($_POST['register']))
   {
-    $user = [
-      'mail' => $_POST['mail'],
-      'password' => md5($_POST['pwd']),
-      'dateofbirth' => $_POST['dob'],
-      'gender' => $_POST['gender'],
-      'firstname' => $_POST['firstname'],
-      'lastname' => $_POST['lastname']
-    ];
-    writeUser($user);
+    if ($_POST['pwd'] == $_POST['pwd2'])
+    {
+      $user = [
+        'email' => $_POST['mail'],
+        'password' => md5($_POST['pwd']),
+        'dateofbirth' => $_POST['dob'],
+        'gender' => $_POST['gender'],
+        'firstname' => $_POST['firstname'],
+        'lastname' => $_POST['lastname']
+      ];
+      try
+      {
+        writeUser($user);
+      } 
+      catch (\Throwable $th)
+      {
+        $user = null;
+        $error = "Cette adresse email existe déjà.";
+      }
+    }
+    else
+    {
+      $user = null;
+      $error = 'Les mots de passe ne correspondent pas.';
+    }
+  }
+  if ($user != null)
+  {
+    $_SESSION['user'] = $user;
+    header('Location: ./');
   }
 ?>
 <div class="main-body clearfix">
@@ -63,6 +93,7 @@
         <input type="submit" name="register" value="Créer votre compte" style="width: 100%;">
       </form>
     </div>
+    <?php if (isset($error)) echo('<p class="error">'.$error.'</p>'); ?>
   </div>
 </div>
 <script type="text/javascript" src="./js/form_validation.js"></script>
@@ -77,10 +108,17 @@
         tab.style.display = 'none';
       });
       document.querySelector('.tab-content.' + event.target.getAttribute('value')).style.display = 'block';
+
+      // On change category, hide error
+      document.querySelector('p.error').style.display = 'none';
     });
   });
 
-  // Start on login tab
-  document.querySelector('.tab-link[value="login"]').className += ' active';
-  document.querySelector('.tab-content.login').style.display = "block";
+  <?php if (isset($_POST['register'])) { ?>
+    document.querySelector('.tab-link[value="register"]').className += ' active';
+    document.querySelector('.tab-content.register').style.display = "block";
+  <?php } else { ?>
+    document.querySelector('.tab-link[value="login"]').className += ' active';
+    document.querySelector('.tab-content.login').style.display = "block";
+  <?php } ?>
 </script>

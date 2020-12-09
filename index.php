@@ -1,12 +1,12 @@
 <?php
 
 session_start();
+require_once("varSession.inc.php");
 
-if (!isset($_SESSION['persistent']))
+if (isset($_GET['action']))
 {
-    require("varSession.inc.php");
+    (include './php/actions/'.urlencode($_GET['action']).'.php') or header('Location: ./404.html');
 }
-
 if (isset($_GET['page']))
 {
     $page = urlencode($_GET['page']);
@@ -18,6 +18,6 @@ else
 
 include("php/header.php");
 
-include("php/" . $page . ".php");
+(include "php/pages/" . $page . ".php") or header('Location: ./404.html');
 
 include("php/footer.php");
