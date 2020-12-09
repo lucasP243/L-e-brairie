@@ -64,9 +64,9 @@ if (isset($_GET['category']))
                     <td><?=$product['price']?>&euro;</td>
                     <td>
                       <p class="cart-ctrl">
-                        <i class="fas fa-plus cart-plus"></i>
-                        <span class="cart-quantity">0</span>
                         <i class="fas fa-minus cart-minus"></i>
+                        <span class="cart-quantity">0</span>
+                        <i class="fas fa-plus cart-plus"></i>
                       </p>
                       <button disabled class="add-cart">Ajouter au panier</button>
                     </td>
