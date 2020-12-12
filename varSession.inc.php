@@ -26,16 +26,16 @@ if (!isset($_SESSION['persistent']))
 
   // Read users from a XML file
   $xml = simplexml_load_file('./data/users.xml');
-  foreach ($xml->users as $user) 
+  foreach ($xml as $user) 
   {
-    $persistent['user'][$user->email] =
+    $persistent['user'][(string) $user->email] =
     [
-      'email' => $user->email,
-      'password' => $user->password,
-      'firstname' => $user->firstname,
-      'lastname' => $user->lastname,
-      'gender' => $user->gender,
-      'dateofbirth' => $user->dateofbirth
+      'email' => (string) $user->email,
+      'password' => (string) $user->password,
+      'firstname' => (string) $user->firstname,
+      'lastname' => (string) $user->lastname,
+      'gender' => (string) $user->gender,
+      'dateofbirth' => (string) $user->dateofbirth
     ];
   }
 
