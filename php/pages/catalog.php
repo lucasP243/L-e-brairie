@@ -50,8 +50,8 @@ if (isset($_POST['ref']))
     <section class="content-container">
       <div id="content">
         <?php if (count($products) > 0) { ?>
-          <h2 class="center">Notre catalogue</h2>
           <div class="catalog-container">
+            <h2 class="center">Notre catalogue</h2>
             <table id="catalog">
               <thead>
                 <tr>
