@@ -23,10 +23,19 @@ window.onload = function () {
   function updateCart(row, isPlus) {
     var cart = row.querySelector('.cart-quantity');
     var stock = parseInt(row.querySelector('.stock-quantity').textContent);
-    var quantity = parseInt(cart.textContent);
+    var button = row.querySelector('.add-cart');
+    var quantity = parseInt(cart.value);
 
     if (isPlus ? quantity < stock : quantity > 0) {
-      cart.textContent = quantity + (isPlus ? 1 : -1);
+      cart.value = quantity + (isPlus ? 1 : -1);
+    }
+    if (cart.value == button.getAttribute("incart"))
+    {
+      button.setAttribute('disabled', '');
+    }
+    else
+    {
+      button.removeAttribute('disabled');
     }
   }
   for (var i = 0, rows = document.getElementsByClassName('product'); i < rows.length; i++) {

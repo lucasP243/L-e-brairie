@@ -12,6 +12,21 @@ if (isset($_GET['category']))
     ) == 0;
   });
 }
+if (isset($_POST['ref']))
+{
+  if (!isset($_SESSION['user']))
+  {
+    header("Location: ./?page=login");
+  }
+  else if ($_POST['quantity'] == '0')
+  {
+    unset($_SESSION['user']['cart'][$_POST['ref']]);
+  }
+  else
+  {
+    $_SESSION['user']['cart'][$_POST['ref']] = $_POST['quantity'];
+  }
+}
 ?>
 <div class="main-body clearfix">
     <!-- Side vertical menu -->
@@ -50,28 +65,29 @@ if (isset($_GET['category']))
                   <th class="stock">Stock</th>
                 </tr>
               </thead>
-
               <tbody>
                 <?php foreach($products as $ref => $product) { ?>
-                  <tr class="product">
-                    <td class="prod-ref"><?=$ref?></td>
-                    <td>
-                      <img class="cover" src=<?='./img/' . $product['cover'] . '.jpg'?> alt="title_cover" />
-                    </td>
-                    <td><a href="#"><?=$product['title']?></a></td>
-                    <td><a href="#"><?=$product['author']?></a></td>
-                    <td><a href="#"><?=$product['editor']?></a></td>
-                    <td><?=$product['price']?>&euro;</td>
-                    <td>
-                      <p class="cart-ctrl">
-                        <i class="fas fa-minus cart-minus"></i>
-                        <span class="cart-quantity">0</span>
-                        <i class="fas fa-plus cart-plus"></i>
-                      </p>
-                      <button disabled class="add-cart">Ajouter au panier</button>
-                    </td>
-                    <td class="stock-quantity"><?=$product['stock']?></td>
-                  </tr>
+                  <form id="form_product<?=$ref?>" action="#" method="post" enctype="application/x-www-form-urlencoded">
+                    <tr class="product">
+                      <td class="prod-ref"><input readonly type="text" name="ref" value="<?=$ref?>" size="5"></td>
+                      <td>
+                        <img class="cover" src=<?='./img/' . $product['cover'] . '.jpg'?> alt="title_cover" />
+                      </td>
+                      <td><a href="#"><?=$product['title']?></a></td>
+                      <td><a href="#"><?=$product['author']?></a></td>
+                      <td><a href="#"><?=$product['editor']?></a></td>
+                      <td><?=$product['price']?>&euro;</td>
+                      <td>
+                        <p class="cart-ctrl">
+                          <i class="fas fa-minus cart-minus"></i>
+                          <input readonly type="text" name="quantity" value="<?=$_SESSION['user']['cart'][$ref] ?? 0?>" class="cart-quantity">
+                          <i class="fas fa-plus cart-plus"></i>
+                        </p>
+                        <input type="submit" value="&#xf217" incart="<?=$_SESSION['user']['cart'][$ref] ?? 0?>" disabled class="fas fa-cart-plus add-cart">
+                      </td>
+                      <td class="stock-quantity"><?=$product['stock']?></td>
+                    </tr>
+                  </form>
                 <?php } ?>
               </tbody>
             </table>

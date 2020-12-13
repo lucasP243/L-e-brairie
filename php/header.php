@@ -32,14 +32,11 @@
         <?php if (isset($_SESSION['user'])) { ?>
           <li>
             <a class="icon-btn account-btn" href="./?page=account" style="margin: 0 5px">
-              <i class="fas fa-user"></i>
-              <span class="icon-label">Votre compte</span>
-            </a>
-          </li>
-          <li>
-            <a class="icon-btn cart-btn" href="./?page=cart" style="margin: 0 5px">
-              <i class="fas fa-shopping-basket"></i>
-              <span class="icon-label">Votre panier</span>
+              <div style="font-size: 1.5em;">
+                <i class="fas fa-user"></i>
+                <i class="fas fa-shopping-basket"></i>
+              </div>
+              <span class="icon-label">Compte & Panier</span>
             </a>
           </li>
         <?php } else { ?>
