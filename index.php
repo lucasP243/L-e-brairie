@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once("varSession.inc.php");
+require_once("database.php");
 
 if (isset($_GET['action']))
 {

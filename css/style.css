@@ -196,7 +196,7 @@ header {
 
 .catalog-container {
     display: table;
-    margin: 50px auto;
+    margin: auto;
 }
 
 #catalog {

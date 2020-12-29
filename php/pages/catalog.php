@@ -1,17 +1,8 @@
 <?php
-$products = $_SESSION['persistent']['product'];
-$category = '';
-if (isset($_GET['category']))
-{
-  $category = $_GET['category'];
-  $products = array_filter($products, function($value)
-  {
-    return strcmp(
-      strtolower(preg_replace('/[^a-zA-Z]+/', '', iconv('utf-8', 'ASCII//TRANSLIT', $value['category']))), 
-      strtolower(preg_replace('/[^a-zA-Z]+/', '', iconv('utf-8', 'ASCII//TRANSLIT', $_GET['category'])))
-    ) == 0;
-  });
-}
+$category = $_GET['category'] ?? '';
+$author = $_GET['author'] ?? '';
+$editor = $_GET['editor'] ?? '';
+$products = getProducts($category, $author, $editor);
 if (isset($_POST['ref']))
 {
   if (!isset($_SESSION['user']))
@@ -50,8 +41,8 @@ if (isset($_POST['ref']))
     <section class="content-container">
       <div id="content">
         <?php if (count($products) > 0) { ?>
+          <h2 class="center">Notre catalogue</h2>
           <div class="catalog-container">
-            <h2 class="center">Notre catalogue</h2>
             <table id="catalog">
               <thead>
                 <tr>
@@ -74,8 +65,8 @@ if (isset($_POST['ref']))
                         <img class="cover" src=<?='./img/' . $product['cover'] . '.jpg'?> alt="title_cover" />
                       </td>
                       <td><a href="#"><?=$product['title']?></a></td>
-                      <td><a href="#"><?=$product['author']?></a></td>
-                      <td><a href="#"><?=$product['editor']?></a></td>
+                      <td><a href="./?page=catalog&author=<?=urlencode($product['author'])?>"><?=$product['author']?></a></td>
+                      <td><a href="./?page=catalog&editor=<?=urlencode($product['editor'])?>"><?=$product['editor']?></a></td>
                       <td><?=$product['price']?>&euro;</td>
                       <td>
                         <p class="cart-ctrl">

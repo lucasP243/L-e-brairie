@@ -6,8 +6,8 @@ USE lebrairie;
 INSERT INTO genre (genre_name)
 VALUES
 	('Roman'),
-    ('Théâtre'),
     ('Poésie'),
+    ('Théâtre'),
     ('Manga')
 ;
 
