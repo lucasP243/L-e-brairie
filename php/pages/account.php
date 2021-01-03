@@ -2,9 +2,9 @@
 <div class="side">
   <div class="flex vertical identity">
     <h3>Identité</h3>
-    <p><?= ['m' => 'Mr. ', 'f' => 'Mme. ', 'o' => ''][$user['gender']] ?><?= strtoupper($user['lastname']) ?> <?= ucfirst($user['firstname']) ?></p>
+    <p><?= strtoupper($user['lastname']) ?> <?= ucfirst($user['firstname']) ?></p>
     <p><?= $user['email'] ?></p>
-    <p>Né le <?= date('j F Y', strtotime($user['dateofbirth'])) ?></p>
+    <p>Né le <?= date('j F Y', strtotime($user['dob'])) ?></p>
   </div>
 </div>
 <div class="main-body clearfix">

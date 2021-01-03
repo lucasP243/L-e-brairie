@@ -3,51 +3,21 @@
   $user = null;
   if (isset($_POST['login']))
   {
-    $mail = $_POST['mail'];
-    $pwd = md5($_POST['pwd']);
+    $mail = $_POST['mail'] ?? '';
+    $pwd = $_POST['pwd'] ?? '';
 
-    if (isset($_SESSION['persistent']['user'][$mail]) && $_SESSION['persistent']['user'][$mail]['password'] == $pwd)
+    if ($user = connectUser($mail, $pwd))
     {
-      $user = $_SESSION['persistent']['user'][$mail];
+      header('Location: ./');
+      exit();
     }
     else
     {
-      $user = null;
       $error = "Email ou mot de passe incorrect.";
     }
   }
-  if (isset($_POST['register']))
+  elseif (isset($_POST['register']))
   {
-    if ($_POST['pwd'] == $_POST['pwd2'])
-    {
-      $user = [
-        'email' => $_POST['mail'],
-        'password' => md5($_POST['pwd']),
-        'dateofbirth' => $_POST['dob'],
-        'gender' => $_POST['gender'],
-        'firstname' => $_POST['firstname'],
-        'lastname' => $_POST['lastname']
-      ];
-      try
-      {
-        writeUser($user);
-      } 
-      catch (\Throwable $th)
-      {
-        $user = null;
-        $error = "Cette adresse email existe déjà.";
-      }
-    }
-    else
-    {
-      $user = null;
-      $error = 'Les mots de passe ne correspondent pas.';
-    }
-  }
-  if ($user != null)
-  {
-    $_SESSION['user'] = $user;
-    header('Location: ./');
   }
 ?>
 <div class="main-body clearfix">
