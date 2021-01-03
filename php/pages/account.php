@@ -56,12 +56,21 @@
       </div>
       <div>
         <h3>Historique de commandes</h3>
-        <p>A venir...</p>
+        <?php
+        $orders = getOrders($user['id']);
+        if (count($orders) > 0) { ?>
+          <ul>
+            <?php foreach ($orders as $id => $order) { ?>
+              <li><span>(#<?=$id?>) <?=$order['date']?></span>: <?=$order['quantity']?> articles commandés (<?=$order['total']?>€)</li>
+            <?php } ?>
+          </ul>
+        <?php } else { ?>
+          <span>Rien à afficher ici...</span>
+        <?php } ?>
       </div>
       <a class="btn-link" href="./?page=<?= $page ?>&action=logout">
         <i class="fas fa-sign-out-alt"></i>
         <span>Se déconnecter</span>
       </a>
   </section>
-</div>
 </div>

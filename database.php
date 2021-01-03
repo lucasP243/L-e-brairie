@@ -265,4 +265,43 @@ function createOrder($user_id, $books)
       mysqli_stmt_close($stmt);
     }
   }
+
+  mysqli_close($db);
+}
+
+function getOrders($user_id)
+{
+  $db = db_connect();
+
+  $stmt = mysqli_prepare($db, "SELECT receipt.*, COUNT(book_id) FROM receipt JOIN in_order USING(receipt_id) WHERE useraccount_id = ?");
+  if (!$stmt)
+  {
+    $msg = '(' . mysqli_errno($db) . ') Unable to prepare statement : ' . mysqli_error($db);
+    mysqli_close($db);
+    die($msg);
+  }
+  mysqli_stmt_bind_param($stmt, 's', $user_id);
+  mysqli_stmt_execute($stmt);
+
+  if (!$result = mysqli_stmt_get_result($stmt))
+  {
+    $msg = '(' . mysqli_errno($db) . ') Unable to fetch result : ' . mysqli_error($db);
+    mysqli_close($db);
+    die($msg);
+  }
+  mysqli_close($db);
+
+  $orders = array();
+  while ($order = mysqli_fetch_row($result))
+  {
+    $orders[$order[0]] = array (
+      'date'   => $order[1],
+      'total'   => $order[2],
+      'quantity'  => $order[4]
+    );
+  }
+  mysqli_free_result($result);
+  mysqli_stmt_close($stmt);
+  return $orders;
+  
 }
