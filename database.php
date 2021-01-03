@@ -273,7 +273,7 @@ function getOrders($user_id)
 {
   $db = db_connect();
 
-  $stmt = mysqli_prepare($db, "SELECT receipt.*, COUNT(book_id) FROM receipt JOIN in_order USING(receipt_id) WHERE useraccount_id = ?");
+  $stmt = mysqli_prepare($db, "SELECT receipt.*, COUNT(book_id) FROM receipt JOIN in_order USING(receipt_id) WHERE useraccount_id = ? GROUP BY receipt_id");
   if (!$stmt)
   {
     $msg = '(' . mysqli_errno($db) . ') Unable to prepare statement : ' . mysqli_error($db);
