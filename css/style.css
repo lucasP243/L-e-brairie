@@ -396,7 +396,7 @@ input:read-only {
 }
 
 input[type="submit"],
-a.btn-link {
+.btn-link {
     display: inline-block;
     color: white;
     background-color: #276e18;

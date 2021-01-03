@@ -58,27 +58,25 @@ if (isset($_POST['ref']))
               </thead>
               <tbody>
                 <?php foreach($products as $ref => $product) { ?>
-                  <form id="form_product<?=$ref?>" action="#" method="post" enctype="application/x-www-form-urlencoded">
-                    <tr class="product">
-                      <td class="prod-ref"><input readonly type="text" name="ref" value="<?=$ref?>" size="5"></td>
-                      <td>
-                        <img class="cover" src=<?='./img/' . $product['cover'] . '.jpg'?> alt="title_cover" />
-                      </td>
-                      <td><a href="#"><?=$product['title']?></a></td>
-                      <td><a href="./?page=catalog&author=<?=urlencode($product['author'])?>"><?=$product['author']?></a></td>
-                      <td><a href="./?page=catalog&editor=<?=urlencode($product['editor'])?>"><?=$product['editor']?></a></td>
-                      <td><?=$product['price']?>&euro;</td>
-                      <td>
-                        <p class="cart-ctrl">
-                          <i class="fas fa-minus cart-minus"></i>
-                          <input readonly type="text" name="quantity" value="<?=$_SESSION['user']['cart'][$ref] ?? 0?>" class="cart-quantity">
-                          <i class="fas fa-plus cart-plus"></i>
-                        </p>
-                        <input type="submit" value="&#xf217" incart="<?=$_SESSION['user']['cart'][$ref] ?? 0?>" disabled class="fas fa-cart-plus add-cart">
-                      </td>
-                      <td class="stock-quantity"><?=$product['stock']?></td>
-                    </tr>
-                  </form>
+                  <tr class="product">
+                    <td class="prod-ref"><span class="ref"><?=$ref?></span></td>
+                    <td>
+                      <img class="cover" src=<?='./img/' . $product['cover'] . '.jpg'?> alt="title_cover" />
+                    </td>
+                    <td><a href="#"><?=$product['title']?></a></td>
+                    <td><a href="./?page=catalog&author=<?=urlencode($product['author'])?>"><?=$product['author']?></a></td>
+                    <td><a href="./?page=catalog&editor=<?=urlencode($product['editor'])?>"><?=$product['editor']?></a></td>
+                    <td><?=$product['price']?>&euro;</td>
+                    <td>
+                      <p class="cart-ctrl">
+                        <i class="fas fa-minus cart-minus"></i>
+                        <span class="cart-quantity"><?=$_SESSION['user']['cart'][$ref] ?? 0?></span>
+                        <i class="fas fa-plus cart-plus"></i>
+                      </p>
+                      <button incart="<?=$_SESSION['user']['cart'][$ref] ?? 0?>" disabled class="fas fa-cart-plus add-cart btn-link"></button>
+                    </td>
+                    <td class="stock-quantity"><?=$product['stock']?></td>
+                  </tr>
                 <?php } ?>
               </tbody>
             </table>

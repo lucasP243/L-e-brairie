@@ -24,10 +24,10 @@ window.onload = function () {
     var cart = row.querySelector('.cart-quantity');
     var stock = parseInt(row.querySelector('.stock-quantity').textContent);
     var button = row.querySelector('.add-cart');
-    var quantity = parseInt(cart.value);
+    var quantity = parseInt(cart.textContent);
 
     if (isPlus ? quantity < stock : quantity > 0) {
-      cart.value = quantity + (isPlus ? 1 : -1);
+      cart.textContent = quantity + (isPlus ? 1 : -1);
     }
     if (cart.value == button.getAttribute("incart"))
     {
@@ -38,8 +38,33 @@ window.onload = function () {
       button.removeAttribute('disabled');
     }
   }
+
+  // Ajax calls for adding item to cart
+  function addCart(row) {
+    var ref = row.querySelector('.ref').textContent;
+    var quantity = parseInt(row.querySelector('.cart-quantity').textContent);
+    row.querySelector('.add-cart').setAttribute('disabled', true);
+    var request;
+    if (window.XMLHttpRequest)
+      request = new XMLHttpRequest();
+    else if(window.ActiveXObject) {
+      try {
+        request = new ActiveXObject("Msxml2.XMLHTTP");
+      } catch (e) {
+        request = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+    }
+    else {
+      alert('XMLHttpRequest not supported.');
+    }
+    request.open('POST', '/php/ajax/addcart.php', true);
+    request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    request.send(`ref=${ref}&quantity=${quantity}`);
+  }
+
   for (var i = 0, rows = document.getElementsByClassName('product'); i < rows.length; i++) {
     rows[i].querySelector('.cart-plus').addEventListener('click', updateCart.bind(null, rows[i], true));
     rows[i].querySelector('.cart-minus').addEventListener('click', updateCart.bind(null, rows[i], false));
+    rows[i].querySelector('.add-cart').addEventListener('click', addCart.bind(null, rows[i]));
   }
 };
