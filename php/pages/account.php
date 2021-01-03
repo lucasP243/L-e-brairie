@@ -13,32 +13,45 @@
       <div>
         <h2>Votre panier</h2>
         <br/>
-        <table id="catalog">
-          <thead>
-            <tr>
-              <th>Ref</th>
-              <th>Titre</th>
-              <th>Quantité</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php if (isset($_SESSION['user']['cart'])) { ?>
-              <?php foreach ($_SESSION['user']['cart'] as $ref => $quantity) { ?>
-                <tr class="product">
-                  <td><?= $ref ?></td>
-                  <td><?= $_SESSION['persistent']['product'][$ref]['title'] ?></td>
-                  <td><?= $quantity ?>&nbsp;
+        <form method='POST' action="./?page=account&action=checkout">
+          <table id="catalog">
+            <thead>
+              <tr>
+                <th>Ref</th>
+                <th>Titre</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php if (isset($user['cart'])) {
+                $cart = array();
+                foreach ($user['cart'] as $ref => $quantity) { 
+                  $book = getProduct($ref); 
+                  $cart[] = array_merge($book, array('quantity' => $quantity));
+                  ?>
+                  <tr class="product">
+                    <td><?= $ref ?></td>
+                    <td><?= $book['title'] ?></td>
+                    <td><input readonly type="text" style="width: 3.5em;" name="books[<?= $ref ?>][price]" value="<?= $book['price'] ?>">&nbsp;&euro;</td>
+                    <td><input readonly type="text" style="width: 3.5em;" name="books[<?= $ref ?>][quantity]" value="<?= $quantity ?>"></td>
+                  </tr>
+                <?php } ?>
+              <?php } else { ?>
+                <tr>
+                  <td colspan="4">Votre panier est vide.</td>
                 </tr>
               <?php } ?>
-            <?php } else { ?>
-              <tr>
-                <td colspan="3">Votre panier est vide.</td>
-              </tr>
-            <?php } ?>
-          </tbody>
-        </table>
-        <form action="./?page=checkout">
-          <input type="submit" value="Passer la commande" disabled>
+            </tbody>
+          </table>
+          <?php if (isset($cart)) { ?>
+              <p>Montant total : 
+                <?= array_reduce($cart, function($total, $product) { 
+                  return $total += $product['price'] * $product['quantity'];
+                }); ?>&nbsp;&euro;
+              </p>
+              <input type="submit" value="Passer la commande">
+          <?php } ?>
         </form>
       </div>
       <div>

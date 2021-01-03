@@ -234,14 +234,14 @@ header {
     transform: scale(1.65);
 }
 
-#catalog .prod-ref input {
+input:read-only {
     border: none;
-    display: block;
     text-align: center;
-    width: 100%;
+    font-size: 16px;
 }
 
 .cart-plus, .cart-minus {
+    font-size: 12px;
     cursor: pointer;
     color: #276e18;
 }

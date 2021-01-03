@@ -123,11 +123,11 @@ BEGIN
     FROM book
     WHERE book_id = NEW.book_id;
     
-    IF book_stock <= 0 THEN
+    IF _book_stock < NEW.book_quantity THEN
 		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Item out of stock.';
 	ELSE
 		UPDATE book
-        SET book_stock = boock_stock - 1
+        SET book_stock = _book_stock - NEW.book_quantity
         WHERE book_id = NEW.book_id;
     END IF;
 END $$

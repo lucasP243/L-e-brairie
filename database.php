@@ -15,6 +15,43 @@ function db_connect()
   return $id;
 }
 
+function getProduct($book_id)
+{
+  $db = db_connect();
+
+  $stmt = mysqli_prepare($db, "SELECT book_id, book_title, book_price FROM book WHERE book_id = ?");
+  if (!$stmt)
+  {
+    $msg = '(' . mysqli_errno($db) . ') Unable to prepare statement : ' . mysqli_error($db);
+    mysqli_close($db);
+    die($msg);
+  }
+
+  mysqli_stmt_bind_param($stmt, 'i', $book_id);
+  mysqli_stmt_execute($stmt);
+
+  if (!$result = mysqli_stmt_get_result($stmt))
+  {
+    $msg = '(' . mysqli_errno($db) . ') Unable to fetch result : ' . mysqli_error($db);
+    mysqli_close($db);
+    die($msg);
+  }
+  mysqli_close($db);
+
+  $book = null;
+  if ($row = mysqli_fetch_row($result))
+  {
+    $book = array(
+      'id' => $row[0],
+      'title' => $row[1],
+      'price' => $row[2]
+    );
+  }
+  mysqli_stmt_close($stmt);
+  mysqli_free_result($result);
+  return $book;
+}
+
 function getProducts($genre='', $author='', $editor='')
 {
   $db = db_connect();
@@ -96,6 +133,7 @@ function getUser($email)
   if ($user = mysqli_fetch_row($result))
   {
     $logged = array();
+    $logged['id'] = $user[0];
     $logged['email'] = $user[1];
     $logged['firstname'] = $user[3];
     $logged['lastname'] = $user[4];
@@ -182,10 +220,49 @@ function createUser($email, $password, $firstname, $lastname, $dob)
 
   mysqli_stmt_bind_param($stmt, 'sssss', $email, $password, $firstname, $lastname, $dob);
   mysqli_stmt_execute($stmt);
+  mysqli_stmt_close($stmt);
 
   if (mysqli_insert_id($db))
   {
-    return getUser($email);
+    $user = getUser($email);
   }
-  else return null;
+  return null;
+}
+
+function createOrder($user_id, $books)
+{
+  $db = db_connect();
+
+  $totalamount = array_reduce($books, function($total, $book) { 
+    return $total += $book['price'] * $book['quantity'];
+  });
+
+  $stmt = mysqli_prepare($db, 'INSERT INTO receipt(receipt_date, useraccount_id, receipt_totalamount) VALUES (NOW(), ?, ?)');
+  if (!$stmt)
+  {
+    $msg = '(' . mysqli_errno($db) . ') Unable to prepare statement : ' . mysqli_error($db);
+    mysqli_close($db);
+    die($msg);
+  }
+
+  mysqli_stmt_bind_param($stmt, 'sd', $user_id, $totalamount);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_close($stmt);
+
+  if ($receipt_id = mysqli_insert_id($db))
+  {
+    foreach($books as $book_id => $book)
+    {
+      $stmt = mysqli_prepare($db, 'INSERT INTO in_order VALUES (?, ?, ?)');
+      if (!$stmt)
+      {
+        $msg = '(' . mysqli_errno($db) . ') Unable to prepare statement : ' . mysqli_error($db);
+        mysqli_close($db);
+        die($msg);
+      }
+      mysqli_stmt_bind_param($stmt, 'iid', $receipt_id, $book_id, $book['quantity']);
+      mysqli_stmt_execute($stmt);
+      mysqli_stmt_close($stmt);
+    }
+  }
 }
