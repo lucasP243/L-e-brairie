@@ -156,3 +156,36 @@ function connectUser($email, $password)
   mysqli_stmt_close($stmt);
   return $connected;
 }
+
+function createUser($email, $password, $firstname, $lastname, $dob)
+{
+  $db = db_connect();
+  $password = md5($password);
+
+  $stmt = mysqli_prepare($db, 'INSERT INTO useraccount (
+    useraccount_email, 
+    useraccount_passwordhash, 
+    useraccount_firstname, 
+    useraccount_lastname, 
+    useraccount_dob,
+    useraccount_creation,
+    useraccount_lastlogin    
+    )
+    VALUES (?, ?, ?, ?, ?, NOW(), NOW())'
+  );
+  if (!$stmt)
+  {
+    $msg = '(' . mysqli_errno($db) . ') Unable to prepare statement : ' . mysqli_error($db);
+    mysqli_close($db);
+    die($msg);
+  }
+
+  mysqli_stmt_bind_param($stmt, 'sssss', $email, $password, $firstname, $lastname, $dob);
+  mysqli_stmt_execute($stmt);
+
+  if (mysqli_insert_id($db))
+  {
+    return getUser($email);
+  }
+  else return null;
+}

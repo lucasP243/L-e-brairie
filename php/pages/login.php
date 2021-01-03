@@ -1,4 +1,3 @@
-<!-- TODO: add form sanitizing server-side -->
 <?php 
   $user = null;
   if (isset($_POST['login']))
@@ -18,6 +17,32 @@
   }
   elseif (isset($_POST['register']))
   {
+    if (
+      isset($_POST['mail']) && $_POST['mail'] != '' &&
+      isset($_POST['pwd']) && $_POST['pwd'] != '' &&
+      isset($_POST['pwd2']) && $_POST['pwd2'] == $_POST['pwd'] &&
+      isset($_POST['firstname']) && $_POST['firstname'] != '' &&
+      isset($_POST['lastname']) && $_POST['lastname'] != '' &&
+      isset($_POST['dob']) && $_POST['dob'] != ''
+    )
+    {
+      $user = createUser($_POST['mail'], $_POST['pwd'], $_POST['firstname'], $_POST['lastname'], $_POST['dob']);
+      if ($user)
+      {
+        $_SESSION['user'] = $user;
+        header('Location: ./');
+        exit();
+      }
+      else
+      {
+        $error = "Email ou mot de passe incorrect.";
+      }
+    }
+    else
+    {
+      header('Location: ./');
+      exit();
+    }
   }
 ?>
 <div class="main-body clearfix">
@@ -42,11 +67,6 @@
         <div class="form-section contact_identity">
           <p style="white-space: nowrap;">
             <span style="width: 20%;">Identité :</span>
-            <select class="form-input" name="gender" required style="width: 10%;">
-              <option value="m">Mr.</option>
-              <option value="f">Mme.</option>
-              <option value="o">Autre</option>
-            </select>
             <input class="form-input form-text" type="text" name="lastname" placeholder="Nom" required style="width: 35%; text-transform: uppercase;">
             <input class="form-input form-text" type="text" name="firstname" placeholder="Prénom" required style="width: 35%; text-transform: capitalize;">
           </p>
