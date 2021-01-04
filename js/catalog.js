@@ -59,6 +59,11 @@ window.onload = function () {
     }
     request.open('POST', '/php/ajax/addcart.php', true);
     request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    request.onreadystatechange = function () {
+      if(request.readyState === 4 && request.status === 401) {
+        window.location.href = '/?page=login';
+      }
+    };
     request.send(`ref=${ref}&quantity=${quantity}`);
   }
 
